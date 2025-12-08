@@ -4,7 +4,7 @@ public class TicTacToe{
     public static void main(String[] args){
         System.out.println("Welcome to TicTacToe");
         //Game Setting
-        int boardSize = 3;
+        int boardSize = 3; //Change the Board Size
         char gameBoard[][] = new char[boardSize][boardSize];
         int roundInd = 0;
         char currPlayer = 'O';
@@ -48,10 +48,7 @@ public class TicTacToe{
                 }
                 currPlayer = currPlayer=='O'? 'X':'O';
             }
-            
-
         }
-
     }
 
     public static void printBoard(char[][] gameBoard, int roundInd, int boardSize){
@@ -70,21 +67,69 @@ public class TicTacToe{
         }       
     }
 
-    public static void checkWinner(char[][] gameBoard, int boardSize, char currPlayer){
+    // public static void checkWinner(char[][] gameBoard, int boardSize, char currPlayer){
+        // for(int row=0; row<boardSize; row++){
+  
+            // if (gameBoard[row][0]!='-' && (gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
+                // announceWinner(gameBoard, boardSize, currPlayer);
+            // }
+            // if (gameBoard[0][row]!='-' && (gameBoard[0][row]==gameBoard[1][row])&&(gameBoard[1][row]==gameBoard[2][row])){
+                // announceWinner(gameBoard, boardSize, currPlayer);
+            // }
+        // }
+  
+        // if (gameBoard[0][0]!='-' && (gameBoard[0][0]==gameBoard[1][1])&&(gameBoard[1][1]==gameBoard[2][2])){
+            // announceWinner(gameBoard, boardSize, currPlayer);
+        // }
+        // if (gameBoard[0][2]!='-' && (gameBoard[0][2]==gameBoard[1][1])&&(gameBoard[1][1]==gameBoard[2][0])){
+            // announceWinner(gameBoard, boardSize, currPlayer);
+        // }
+    // }
+
+public static void checkWinner(char[][] gameBoard, int boardSize, char currPlayer){
         for(int row=0; row<boardSize; row++){
-            //Row&Col Check
-            if (gameBoard[row][0]!='-' && (gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
+            boolean rowWin = true;
+            //Row Check
+            for(int col=1; col<boardSize; col++){
+                if(gameBoard[row][col]!=gameBoard[row][0]||gameBoard[row][0]=='-'){
+                    rowWin = false;
+                    break;
+                }
+            }
+            if(rowWin){
                 announceWinner(gameBoard, boardSize, currPlayer);
             }
-            if (gameBoard[0][row]!='-' && (gameBoard[0][row]==gameBoard[1][row])&&(gameBoard[1][row]==gameBoard[2][row])){
+            //Col Check
+            boolean colWin = true;
+            for(int col=1; col<boardSize; col++){
+                if(gameBoard[col][row]!=gameBoard[0][row]||gameBoard[0][row]=='-'){
+                    colWin = false;
+                    break;
+                }
+            }
+            if(colWin){
                 announceWinner(gameBoard, boardSize, currPlayer);
             }
         }
         //Diagonals Check
-        if (gameBoard[0][0]!='-' && (gameBoard[0][0]==gameBoard[1][1])&&(gameBoard[1][1]==gameBoard[2][2])){
+        boolean tlbrWin = true;
+        for(int row=1; row<boardSize; row++){
+            if(gameBoard[row][row]!=gameBoard[0][0]||gameBoard[0][0]=='-'){
+                tlbrWin = false;
+                break;
+            }
+        }
+        if(tlbrWin){
             announceWinner(gameBoard, boardSize, currPlayer);
         }
-        if (gameBoard[0][2]!='-' && (gameBoard[0][2]==gameBoard[1][1])&&(gameBoard[1][1]==gameBoard[2][0])){
+        boolean trblWin = true;
+        for(int row=1; row<boardSize; row++){
+            if(gameBoard[row][boardSize-1-row]!=gameBoard[0][boardSize-1]||gameBoard[0][boardSize-1]=='-'){
+                tlbrWin = false;
+                break;
+            }
+        }
+        if(tlbrWin){
             announceWinner(gameBoard, boardSize, currPlayer);
         }
     }
