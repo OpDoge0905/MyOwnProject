@@ -28,17 +28,25 @@ public class TicTacToe{
             int col = scanner.nextInt();
 
             
-            if(row<0||row>=boardSize||col<0||col>=boardSize){ //||!(row instanceof Integer)||!(col instanceof Integer) =>not pratical!
+            if(row<0||row>=boardSize||col<0||col>=boardSize){ 
+                //Out of Range Illegal
                 System.out.println("(0-"+(boardSize-1)+") ONLY!!");
             }
             else if(gameBoard[row][col] != '-'){
+                //Repeat Illegal
                 System.out.println("There's already a piece!");
             }
             else{
+                //Legal
                 gameBoard[row][col] = currPlayer;
                 checkWinner(gameBoard, boardSize, currPlayer);
-                currPlayer = currPlayer=='O'? 'X':'O';
                 roundInd++;
+                if(roundInd >= boardSize*boardSize){
+                    //TIE
+                    currPlayer = 'T';
+                    announceWinner(gameBoard, boardSize, currPlayer);
+                }
+                currPlayer = currPlayer=='O'? 'X':'O';
             }
             
 
@@ -64,13 +72,31 @@ public class TicTacToe{
 
     public static void checkWinner(char[][] gameBoard, int boardSize, char currPlayer){
         for(int row=0; row<boardSize; row++){
-            if (gameBoard[row][0]!='-'){
-                if((gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
-                    System.out.println(" || \"" + currPlayer + "\"" + " WINS THE GAME!! || ");
-                    printBoard(gameBoard, -1, boardSize);
-                    System.exit(0);
-                }
+            //Row&Col Check
+            if (gameBoard[row][0]!='-' && (gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
+                announceWinner(gameBoard, boardSize, currPlayer);
+            }
+            if (gameBoard[0][row]!='-' && (gameBoard[0][row]==gameBoard[1][row])&&(gameBoard[1][row]==gameBoard[2][row])){
+                announceWinner(gameBoard, boardSize, currPlayer);
             }
         }
+        //Diagonals Check
+        if (gameBoard[0][0]!='-' && (gameBoard[0][0]==gameBoard[1][1])&&(gameBoard[1][1]==gameBoard[2][2])){
+            announceWinner(gameBoard, boardSize, currPlayer);
+        }
+        if (gameBoard[0][2]!='-' && (gameBoard[0][2]==gameBoard[1][1])&&(gameBoard[1][1]==gameBoard[2][0])){
+            announceWinner(gameBoard, boardSize, currPlayer);
+        }
+    }
+
+    public static void announceWinner(char[][] gameBoard, int boardSize, char currPlayer){
+        if(currPlayer=='O'||currPlayer=='X'){
+            System.out.println(" || \"" + currPlayer + "\"" + " WINS THE GAME!! || ");
+        }
+        else{
+            System.out.println(" ||  TIE!! || ");
+        }
+        printBoard(gameBoard, -1, boardSize);
+        System.exit(0);
     }
 }
