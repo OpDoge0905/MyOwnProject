@@ -1,4 +1,4 @@
-# 🚀 Java Learning Journey & Portfolio
+ # 🚀 Java Learning Journey & Portfolio
 
 ![Java](https://img.shields.io/badge/Language-Java_17+-orange?style=for-the-badge&logo=java&logoColor=white)
 ![IDE](https://img.shields.io/badge/IDE-VS_Code-blue?style=for-the-badge&logo=visual-studio-code&logoColor=white)
@@ -25,7 +25,7 @@ Click on the project name to view detailed documentation and source code.
 | :--- | :--- | :--- | :---: |
 | **[🧮 Calculator (計算機)](./Calculator)** | Console App | `Nested Loops`, `Exception Handling`, `Flow Control` | ✅ Done |
 | **[⭕❌ Tic-Tac-Toe (井字遊戲)](./TicTacToe)** | Console App | `2D Arrays`, `Dynamic Algorithm`, `Game Logic` | ✅ Done |
-| **ATM System (提款機)** | OOP System | `Object-Oriented Programming`, `Class Design` | 🚧 Planned |
+| **[🏧 ATM System (提款機)](./ATM)** | OOP System | `Object-Oriented Programming`, `Encapsulation`, `Class Design` | ✅ Done |
 
 ---
 
