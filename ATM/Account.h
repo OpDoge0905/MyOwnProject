@@ -1,5 +1,5 @@
-#ifndef ATM_h
-#define ATM_h
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
 
 #include <string>
 
