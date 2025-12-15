@@ -68,8 +68,7 @@ public class TicTacToe{
     }
 
     // public static void checkWinner(char[][] gameBoard, int boardSize, char currPlayer){
-        // for(int row=0; row<boardSize; row++){
-  
+        // for(int row=0; row<boardSize; row++){  
             // if (gameBoard[row][0]!='-' && (gameBoard[row][0]==gameBoard[row][1])&&(gameBoard[row][1]==gameBoard[row][2])){
                 // announceWinner(gameBoard, boardSize, currPlayer);
             // }
@@ -125,7 +124,7 @@ public static void checkWinner(char[][] gameBoard, int boardSize, char currPlaye
         boolean trblWin = true;
         for(int row=1; row<boardSize; row++){
             if(gameBoard[row][boardSize-1-row]!=gameBoard[0][boardSize-1]||gameBoard[0][boardSize-1]=='-'){
-                tlbrWin = false;
+                trblWin = false;
                 break;
             }
         }
